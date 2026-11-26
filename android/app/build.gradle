@@ -4,7 +4,7 @@ android {
     namespace 'fr.mybinouze.app'
     compileSdk 35
     defaultConfig {
-        applicationId 'fr.mybinouze.app'
+        applicationId 'com.mybinouz.app'
         minSdk 24
         targetSdk 35
         versionCode 2
