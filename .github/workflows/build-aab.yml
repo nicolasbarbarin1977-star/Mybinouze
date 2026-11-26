@@ -19,7 +19,9 @@ jobs:
         continue-on-error: true
         run: |
           for u in "" index.html manifest.json icon-192.png sw.js .well-known/assetlinks.json; do echo "$(curl -s -o /dev/null -w '%{http_code}' https://stirring-belekoy-b817ed.netlify.app/$u) /$u"; done
-          curl -s https://stirring-belekoy-b817ed.netlify.app/ | head -c 600
+          curl -sI https://stirring-belekoy-b817ed.netlify.app/.well-known/assetlinks.json
+          curl -s https://stirring-belekoy-b817ed.netlify.app/.well-known/assetlinks.json; echo
+          curl -s "https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://stirring-belekoy-b817ed.netlify.app&relation=delegate_permission/common.handle_all_urls"; echo
       - run: gradle :app:bundleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with: { name: my-binouze-aab-unsigned, path: android/app/build/outputs/bundle/release/*.aab }
