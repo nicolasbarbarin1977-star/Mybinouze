@@ -2,12 +2,12 @@ plugins { id 'com.android.application' }
 def host = project.findProperty('twaHost') ?: 'stirring-belekoy-b817ed.netlify.app'
 android {
     namespace 'fr.mybinouze.app'
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId 'com.mybinouz.app'
         minSdk 24
-        targetSdk 35
-        versionCode 2
+        targetSdk 36
+        versionCode 3
         versionName '1.0.0'
         manifestPlaceholders = [hostName: host, launchUrl: "https://${host}/index.html"]
         resValue 'string', 'assetStatements', "[{ \\\"relation\\\": [\\\"delegate_permission/common.handle_all_urls\\\"], \\\"target\\\": {\\\"namespace\\\": \\\"web\\\", \\\"site\\\": \\\"https://${host}\\\"}}]"
