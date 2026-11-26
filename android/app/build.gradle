@@ -1,0 +1,18 @@
+plugins { id 'com.android.application' }
+def host = project.findProperty('twaHost') ?: 'cozy-jalebi-02ca19.netlify.app'
+android {
+    namespace 'fr.mybinouze.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'fr.mybinouze.app'
+        minSdk 21
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+        manifestPlaceholders = [hostName: host, launchUrl: "https://${host}/index.html"]
+        resValue 'string', 'assetStatements', "[{ \\\"relation\\\": [\\\"delegate_permission/common.handle_all_urls\\\"], \\\"target\\\": {\\\"namespace\\\": \\\"web\\\", \\\"site\\\": \\\"https://${host}\\\"}}]"
+    }
+    buildTypes { release { minifyEnabled false } }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
+dependencies { implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0' }
