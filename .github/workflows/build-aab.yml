@@ -13,11 +13,11 @@ jobs:
         with: { distribution: temurin, java-version: '17' }
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: '8.9' }
-      - name: Icons from the website
+      - name: Check website (info only)
+        continue-on-error: true
         run: |
-          mkdir -p app/src/main/res/mipmap-xxxhdpi app/src/main/res/drawable
-          curl -fsSL https://cozy-jalebi-02ca19.netlify.app/icon-192.png -o app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-          curl -fsSL https://cozy-jalebi-02ca19.netlify.app/icon-512.png -o app/src/main/res/drawable/splash.png
+          for u in "" index.html manifest.json icon-192.png sw.js .well-known/assetlinks.json; do echo "$(curl -s -o /dev/null -w '%{http_code}' https://cozy-jalebi-02ca19.netlify.app/$u) /$u"; done
+          curl -s https://cozy-jalebi-02ca19.netlify.app/ | head -c 600
       - run: gradle :app:bundleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with: { name: my-binouze-aab-unsigned, path: android/app/build/outputs/bundle/release/*.aab }
