@@ -1,5 +1,5 @@
 plugins { id 'com.android.application' }
-def host = project.findProperty('twaHost') ?: 'cozy-jalebi-02ca19.netlify.app'
+def host = project.findProperty('twaHost') ?: 'stirring-belekoy-b817ed.netlify.app'
 android {
     namespace 'fr.mybinouze.app'
     compileSdk 35

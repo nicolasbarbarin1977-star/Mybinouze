@@ -18,8 +18,8 @@ jobs:
       - name: Check website (info only)
         continue-on-error: true
         run: |
-          for u in "" index.html manifest.json icon-192.png sw.js .well-known/assetlinks.json; do echo "$(curl -s -o /dev/null -w '%{http_code}' https://cozy-jalebi-02ca19.netlify.app/$u) /$u"; done
-          curl -s https://cozy-jalebi-02ca19.netlify.app/ | head -c 600
+          for u in "" index.html manifest.json icon-192.png sw.js .well-known/assetlinks.json; do echo "$(curl -s -o /dev/null -w '%{http_code}' https://stirring-belekoy-b817ed.netlify.app/$u) /$u"; done
+          curl -s https://stirring-belekoy-b817ed.netlify.app/ | head -c 600
       - run: gradle :app:bundleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with: { name: my-binouze-aab-unsigned, path: android/app/build/outputs/bundle/release/*.aab }
